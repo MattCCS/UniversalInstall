@@ -1,0 +1,41 @@
+#!/bin/bash
+
+echo "[ ] Checking for brew..." \
+    && (brew --version > /dev/null \
+        && echo "[+] brew already installed.") \
+    || (echo "  [ ] Installing brew..." \
+        && /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" \
+        && echo "  [+] Installing brew succeeded." \
+        || exit "  [-] Installing brew failed!")
+
+echo "[ ] Checking for brew-python2..." \
+    && ([[ $(which python2) == /usr/local/bin/* ]] \
+        && echo "[+] brew-python2 already installed.") \
+    || (echo "  [ ] Installing brew-python2..." \
+        && brew install python2 \
+        && echo "  [+] Installing brew-python2 succeeded." \
+        || exit "  [-] Installing brew-python2 failed!")
+
+echo "[ ] Checking for brew-python3..." \
+    && ([[ $(which python3) == /usr/local/bin/* ]] \
+        && echo "[+] brew-python3 already installed.") \
+    || (echo "  [ ] Installing brew-python3..." \
+        && brew install python3 \
+        && echo "  [+] Installing brew-python3 succeeded." \
+        || exit "  [-] Installing brew-python3 failed!")
+
+echo "[ ] Checking for pip2-virtualenv..." \
+    && (pip2 freeze | grep "virtualenv" > /dev/null \
+        && echo "[+] pip2-virtualenv already installed.") \
+    || (echo "  [ ] Installing pip2-virtualenv..." \
+        && pip2 install virtualenv \
+        && echo "  [+] Installing pip2-virtualenv succeeded.  Remember to add [alias virtualenv2='virtualenv -p python2'] to your ~/.bash_profile!" \
+        || exit "  [-] Installing pip2-virtualenv failed!")
+
+echo "[ ] Checking for pip3-virtualenv..." \
+    && (pip3 freeze | grep "virtualenv" > /dev/null \
+        && echo "[+] pip3-virtualenv already installed.") \
+    || (echo "  [ ] Installing pip3-virtualenv..." \
+        && pip3 install virtualenv \
+        && echo "  [+] Installing pip3-virtualenv succeeded.  Remember to add [alias virtualenv3='virtualenv -p python3'] to your ~/.bash_profile!" \
+        || exit "  [-] Installing pip3-virtualenv failed!")
