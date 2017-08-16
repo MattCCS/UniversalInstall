@@ -17,7 +17,7 @@ uinstall () {
 
     # try to install
     echo "  [ ] Installing $name... ($install_command)"
-    if eval "$install_command &>/dev/null"; then
+    if eval "$install_command"; then
         echo "  [+] Installing $name succeeded.  $custom_message"
     else
         echo "  [!] Installing $name failed!"
