@@ -62,3 +62,13 @@ uinstall 'pip3-virtualenv' \
 uinstall 'pip3-vulture' \
     'pip3 freeze | grep "vulture"' \
     'pip3 install vulture'
+
+uinstall 'iterm2' \
+    'brew cask list | grep iterm2' \
+    'brew cask install iterm2' \
+    'Remember to add iTerm 2 (might be called iTerm) to your dock, and customize the fonts, colors, shortcuts, etc.'
+
+uinstall 'oh-my-zsh' \
+    '[[ -f $ZSH/oh-my-zsh.sh ]]' \
+    'sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"' \
+    'Remember to set zsh as the default shell in iTerm2, and Menlo as the font! Set ZSH_THEME="agnoster"'
