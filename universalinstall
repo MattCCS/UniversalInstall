@@ -63,6 +63,14 @@ uinstall 'pip3-vulture' \
     'pip3 freeze | grep "vulture"' \
     'pip3 install vulture'
 
+uinstall 'ffmpeg' \
+    'ffmpeg -version > /dev/null' \
+    'brew install ffmpeg'
+
+uinstall 'exiftool' \
+    'exiftool -ver > /dev/null' \
+    'brew install exiftool'
+
 uinstall 'iterm2' \
     'brew cask list | grep iterm2' \
     'brew cask install iterm2' \
